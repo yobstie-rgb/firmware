@@ -24,13 +24,15 @@ class OtaUploadType extends AbstractType
             ])
             ->add('firmwareFile', FileType::class, [
                 'label' => 'Fichier binaire (.bin)',
-                'mapped' => false, // Non lié directement à une entité
+                'mapped' => false,
                 'required' => true,
                 'constraints' => [
                     new File([
-                        'maxSize' => '4M', // Ajuster la taille max d'un fichier ESP32
+                        'maxSize' => '8M',
                         'mimeTypes' => [
                             'application/octet-stream',
+                            'application/x-dosexec',      // Type MIME détecté sous Windows
+                            'application/x-binary',
                             'application/macbinary',
                         ],
                         'mimeTypesMessage' => 'Veuillez téléverser un fichier .bin valide.',
