@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Gestion Scolaire{% endblock %}
+
+{% block body %}
+    <h1>Bienvenue sur le tableau de bord</h1>
+    <p>Enregistrer des fichiers firmware</p>
+    <div class="container mt-4">
+        <form method="dialog">
+            <p>Voulez-vous téléverser un fichier firmware ?</p>
+            <menu>
+                <button id="cancelButton">Annuler</button>
+                <button class="btn btn-primary">
+                    <a href="{{ path('app_ota_upload') }}">Téléverser</a>
+                </button>
+            </menu>
+        </form>
+    </div>
+{% endblock %}
