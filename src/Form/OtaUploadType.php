@@ -21,6 +21,10 @@ class OtaUploadType extends AbstractType
                 'constraints' => [
                     new NotBlank(['message' => 'Veuillez saisir une version.']),
                 ],
+                'attr' => [
+                    'placeholder' => '1.0.2',
+                    'class' => 'form-control',
+                ],
             ])
             ->add('firmwareFile', FileType::class, [
                 'label' => 'Fichier binaire (.bin)',
@@ -37,6 +41,9 @@ class OtaUploadType extends AbstractType
                         ],
                         'mimeTypesMessage' => 'Veuillez téléverser un fichier .bin valide.',
                     ])
+                ],
+                'attr' => [
+                    'class' => 'form-control',
                 ],
             ])
             ->add('save', SubmitType::class, [

@@ -15,7 +15,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 final class OtaController extends AbstractController
 {
-    #[Route('/admin/ota/upload', name: 'app_ota_upload', methods: ['GET', 'POST'])]
+    #[Route('/admin/ota/upload/encoder', name: 'app_ota_upload', methods: ['GET', 'POST'])]
     public function upload(Request $request, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(OtaUploadType::class);
