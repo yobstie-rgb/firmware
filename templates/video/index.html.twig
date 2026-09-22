@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une Vidéo{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="card shadow-lg border-0 my-5" style="border-radius: 12px; overflow: hidden;">
+        <div class="card-header py-3 d-flex align-items-center justify-content-between" style="background-color: #0F172A; border-bottom: 3px solid #D4AF37;">
+            <h5 class="mb-0 text-white font-weight-bold">
+                <i class="fas fa-video me-2" style="color: #D4AF37;"></i>Ajouter une Vidéo Projet
+            </h5>
+        </div>
+        <div class="card-body p-4 bg-white">
+            {{ form_start(form) }}
+                <div class="form-group mb-3">
+                    {{ form_row(form.title) }}
+                </div>
+                <div class="form-group mb-4">
+                    {{ form_row(form.videoFile) }}
+                </div>
+                <button type="submit" class="btn text-white font-weight-bold shadow-sm" style="background-color: #0F172A; border-left: 3px solid #D4AF37;">
+                    <i class="fas fa-upload me-2" style="color: #D4AF37;"></i>Téléverser la vidéo
+                </button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

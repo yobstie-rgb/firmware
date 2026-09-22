@@ -98,4 +98,11 @@ final class OtaController extends AbstractController
 
         return $response;
     }
+
+    #[Route('/ota/choice/operation', name:'app_ota_choice')]
+    public function ota() : Response {
+
+        return $this->render('ota/choice.html.twig', [
+        ]);
+    }
 }

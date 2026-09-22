@@ -28,7 +28,7 @@
                 {# En-tête de la carte #}
                 <div class="card-header py-3 d-flex align-items-center justify-content-between" style="background-color: #1653e2; border-bottom: 3px solid #504112;">
                     <h5 class="mb-0 text-white font-weight-bold">
-                        <i class="fas fa-upload me-2" style="color: #e0d5b0;"></i>Mise à jour Firmware (OTA)
+                        <i class="fas fa-upload me-2" style="color: #e0d5b0;"></i>Mise à jour Firmware (OTA) ENCODER
                     </h5>
                     <span class="badge bg-warning text-dark">ESP32 / ESP8266</span>
                 </div>
@@ -37,7 +37,7 @@
                 <div class="card-body p-4 text-center bg-white">
                     <div class="my-3">
                         <i class="fas fa-file-code fa-3x mb-3" style="color: #132c66;"></i>
-                        <h5 class="fw-bold text-dark">Téléverser un nouveau firmware </h5>
+                        <h5 class="fw-bold text-dark">Téléverser un nouveau firmware "ENCODER"</h5>
                         <p class="text-muted small">
                             Sélectionnez et envoyez un fichier binaire (<code>.bin</code>) pour mettre à jour vos modules distants en toute sécurité.
                         </p>
@@ -48,7 +48,7 @@
                         <a href="#" class="btn btn-outline-secondary px-4 font-weight-bold">
                             <i class="fas fa-times me-1"></i> Annuler
                         </a>
-                        <a href="{{ path('app_ota_choice') }}" class="btn text-white font-weight-bold shadow-sm px-4" style="background-color: #0F172A; border-left: 3px solid #D4AF37;">
+                        <a href="{{ path('app_ota_upload') }}" class="btn text-white font-weight-bold shadow-sm px-4" style="background-color: #0F172A; border-left: 3px solid #D4AF37;">
                             <i class="fas fa-cloud-upload-alt me-2" style="color: #D4AF37;"></i> Téléverser
                         </a>
                     </div>
@@ -67,7 +67,7 @@
                 {# En-tête de la carte #}
                 <div class="card-header py-3 d-flex align-items-center justify-content-between" style="background-color: #0F172A; border-bottom: 3px solid #D4AF37;">
                     <h5 class="mb-0 text-white font-weight-bold">
-                        <i class="fas fa-video me-2" style="color: #D4AF37;"></i>Gestion des Vidéos Projet
+                        <i class="fas fa-upload me-2" style="color: #D4AF37;"></i>Mise à jour Firmware (OTA) "SERVER SMS"
                     </h5>
                     <span class="badge bg-warning text-dark">ESP32 / ESP8266</span>
                 </div>
@@ -75,39 +75,27 @@
                 {# Corps de la carte #}
                 <div class="card-body p-4 text-center bg-white">
                     <div class="my-3">
-                        <i class="fas fa-film fa-3x mb-3" style="color: #0F172A;"></i>
-                        <h5 class="fw-bold text-dark">Gérer les Vidéos du Projet</h5>
+                        <i class="fas fa-file-code fa-3x mb-3" style="color: #0F172A;"></i>
+                        <h5 class="fw-bold text-dark">Téléverser un nouveau firmware "SERVER SMS"</h5>
                         <p class="text-muted small">
-                            Ajoutez de nouvelles vidéos de démonstration/firmware ou lisez les vidéos existantes du projet.
+                            Sélectionnez et envoyez un fichier binaire (<code>.bin</code>) pour mettre à jour vos modules distants en toute sécurité.
                         </p>
                     </div>
 
-                    {# Les 2 grands boutons d'action #}
-                    <div class="d-grid gap-3 my-4">
-                        <!-- Bouton Ajouter les vidéos -->
-                        <a href="{{ path('app_video_add') }}" class="btn btn-lg text-white font-weight-bold shadow-sm p-3 d-flex align-items-center justify-content-center" style="background-color: #0F172A; border-left: 5px solid #D4AF37; font-size: 1.1rem;">
-                            <i class="fas fa-plus-circle fa-2x me-3" style="color: #D4AF37;"></i>
-                            <span>Ajouter les vidéos</span>
+                    {# Actions en boutons Bootstrap (Remplacement de la balise dialog/menu native) #}
+                    <div class="d-flex justify-content-center gap-3 mt-4">
+                        <a href="#" class="btn btn-outline-secondary px-4 font-weight-bold">
+                            <i class="fas fa-times me-1"></i> Annuler
                         </a>
-
-                        <!-- Bouton Lire les vidéos projet -->
-                        <a href="{{ path('app_video_list') }}" class="btn btn-lg btn-warning text-dark font-weight-bold shadow-sm p-3 d-flex align-items-center justify-content-center" style="font-size: 1.1rem;">
-                            <i class="fas fa-play-circle fa-2x me-3"></i>
-                            <span>Lire les vidéos projet</span>
-                        </a>
-                    </div>
-
-                    {# Bouton secondaire d'annulation/retour #}
-                    <div class="mt-3">
-                        <a href="#" class="btn btn-link text-muted btn-sm">
-                            <i class="fas fa-arrow-left me-1"></i> Retour au tableau de bord
+                        <a href="{{ path('app_ota_upload') }}" class="btn text-white font-weight-bold shadow-sm px-4" style="background-color: #0F172A; border-left: 3px solid #D4AF37;">
+                            <i class="fas fa-cloud-upload-alt me-2" style="color: #D4AF37;"></i> Téléverser
                         </a>
                     </div>
                 </div>
 
                 {# Pied de carte #}
                 <div class="card-footer bg-light p-3 text-center">
-                    <small class="text-muted"><i class="fas fa-shield-alt me-1 text-primary"></i> Lecteur multimédia sécurisé</small>
+                    <small class="text-muted"><i class="fas fa-shield-alt me-1 text-primary"></i> Transfert sécurisé via HTTPS / TLS</small>
                 </div>
 
             </div>

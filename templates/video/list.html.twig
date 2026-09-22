@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Galerie des Vidéos Projet{% endblock %}
+
+{% block body %}
+<div class="container py-4">
+
+    <!-- En-tête -->
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 text-gray-800 mb-0 font-weight-bold">
+            <i class="fas fa-film me-2" style="color: #D4AF37;"></i>Vidéos du Projet
+        </h1>
+        <a href="{{ path('app_video_add') }}" class="btn text-white font-weight-bold shadow-sm" style="background-color: #0F172A; border-left: 3px solid #D4AF37;">
+            <i class="fas fa-plus me-1" style="color: #D4AF37;"></i> Ajouter une vidéo
+        </a>
+    </div>
+
+    <!-- Messages Flash -->
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-1"></i> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+
+    <!-- Liste des vidéos -->
+    {% if videos is empty %}
+        <div class="card shadow-sm border-0 text-center p-5">
+            <div class="card-body">
+                <i class="fas fa-video-slash fa-4x text-muted mb-3"></i>
+                <h5 class="text-muted">Aucune vidéo disponible.</h5>
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            {% for video in videos %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow border-0 h-100" style="border-radius: 12px; overflow: hidden;">
+                        
+                        <!-- Lecteur Vidéo via le Streamer Symfony -->
+                        <div class="bg-dark position-relative" style="min-height: 200px;">
+                            <video id="video-player-{{ loop.index }}" class="w-100" controls preload="metadata" style="max-height: 240px; display: block; background-color: #000;">
+                                <source src="{{ path('app_video_stream', {'filename': video.name}) }}">
+                                Votre navigateur ne supporte pas la lecture vidéo HTML5.
+                            </video>
+                        </div>
+
+                        <!-- Informations et Boutons -->
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h6 class="font-weight-bold text-dark text-truncate" title="{{ video.name }}">
+                                    <i class="fas fa-file-video me-2 text-primary"></i>{{ video.name }}
+                                </h6>
+                                <p class="text-muted small mb-2">
+                                    <i class="fas fa-hdd me-1"></i>Taille : {{ video.size }} Mo
+                                </p>
+                            </div>
+
+                            <!-- Boutons Play / Pause -->
+                            <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                                <button type="button" class="btn btn-sm btn-success px-3 font-weight-bold" onclick="playVideo('video-player-{{ loop.index }}')">
+                                    <i class="fas fa-play me-1"></i> Lecture
+                                </button>
+                                <button type="button" class="btn btn-sm btn-warning text-dark px-3 font-weight-bold" onclick="pauseVideo('video-player-{{ loop.index }}')">
+                                    <i class="fas fa-pause me-1"></i> Pause
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+</div>
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        function playVideo(id) {
+            const video = document.getElementById(id);
+            if (video) {
+                // Pause les autres vidéos
+                document.querySelectorAll('video').forEach(v => {
+                    if (v.id !== id) v.pause();
+                });
+
+                video.play().catch(error => {
+                    console.error("Erreur de lecture :", error);
+                    alert("Impossible de lire la vidéo. Vérifiez que le fichier est un MP4 encodé en H.264.");
+                });
+            }
+        }
+
+        function pauseVideo(id) {
+            const video = document.getElementById(id);
+            if (video) {
+                video.pause();
+            }
+        }
+    </script>
+{% endblock %}
+{% endblock %}
